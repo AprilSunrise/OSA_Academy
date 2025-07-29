@@ -23,7 +23,7 @@ struct Login: View {
                     .foregroundColor(.purple)
                     .font(.caption)
                 //TextField("Username", text:  /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                    userNameField
+                userNameField
                     .padding()
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
@@ -35,14 +35,13 @@ struct Login: View {
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
                     .padding()
-                Button("Next") {
-                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                NavigationLink(destination: Home()) {
+                    Text("Next")
+                    
+                    
                 }
-                
-                
             }
-        }
-        .padding()
+        } .padding()
     }
 }
 

@@ -9,12 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct Login: View {
+    @State var name = ""
+    @State var password = ""
+    @State private var ShowWarning: Bool = false
+    @State private var NavigateHome: Bool = false
     var body: some View {
-      let userNameField = TextField("Username", text: .constant(""))
-      let PasswordField = SecureField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("Apple")/*@END_MENU_TOKEN@*/)
+      
+        let userNameField = TextField("Username", text: $name)
+      
+        let PasswordField = SecureField("Password", text: $password)
         
         NavigationStack{
+            if ShowWarning {
+                Text("You must enter a username or password!")
+                    .foregroundColor(.red)
+                
+            }
+            Spacer()
             VStack{
+                
                 Text("Login")
                     .font(.largeTitle)
                     .bold()
@@ -22,27 +35,45 @@ struct Login: View {
                     .padding()
                     .foregroundColor(.purple)
                     .font(.caption)
-                //TextField("Username", text:  /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                 userNameField
                     .padding()
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
                     .padding()
                 
-                //SecureField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("Apple")/*@END_MENU_TOKEN@*/)
                 PasswordField
                     .padding()
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
                     .padding()
+                    
                 NavigationLink(destination: Home()) {
-                    Text("Next")
-                    
-                    
+                    Text("Login")
+                
                 }
+                Button("Login") {
+                    if name.isEmpty || password.isEmpty {
+                      ShowWarning = true
+                    }
+                }
+                
+             
             }
+            Spacer()
+            VStack{
+                
+                Text("Don't have an account?")
+                NavigationLink(destination: SignUp()) {
+                    Text("Sign Up!")
+                }
+                
+            }
+            
+           
         } .padding()
     }
+    
+  
 }
 
 

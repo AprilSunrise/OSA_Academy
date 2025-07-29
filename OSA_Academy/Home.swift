@@ -9,7 +9,16 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
-        Text("Welcome to OSA!")
+        NavigationStack{
+            Text("Welcome to OSA!")
+                .font(.largeTitle)
+                .bold()
+            NavigationLink(destination: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Destination@*/Text("Destination")/*@END_MENU_TOKEN@*/) {
+                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label Content@*/Text("Navigate")/*@END_MENU_TOKEN@*/
+                
+            }
+            
+        }
     }
 }
 

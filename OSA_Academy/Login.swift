@@ -73,7 +73,7 @@ struct Login: View {
                     NavigateHome = true
                 }
             }) {
-                Text("Go to Home")
+                Text("Login")
             }
             .alert("Please fill in both name and password.", isPresented: $ShowWarning) {
                 Button("OK", role: .cancel) { }

@@ -9,9 +9,18 @@ import SwiftUI
 
 struct SignUp: View {
     var body: some View {
-        Text("Sign Up!")
-            .font(.largeTitle)
-            .bold(true)
+        VStack {
+            Text("Sign Up!")
+                .font(.largeTitle)
+                .bold(true)
+            HStack {
+                TextField("Name", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                    
+                    .background(Color(.systemGroupedBackground))
+                    .padding()
+                    
+            }
+        }
     }
 }
 

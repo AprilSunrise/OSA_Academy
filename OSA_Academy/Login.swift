@@ -14,9 +14,9 @@ struct Login: View {
     @State private var ShowWarning: Bool = false
     @State private var NavigateHome: Bool = false
     var body: some View {
-      
+        
         let userNameField = TextField("Username", text: $name)
-      
+        
         let PasswordField = SecureField("Password", text: $password)
         
         NavigationStack{
@@ -28,6 +28,11 @@ struct Login: View {
             Spacer()
             VStack{
                 
+                Image("bookKWK")
+                    .resizable(resizingMode: .stretch)
+                    .cornerRadius(505)
+                    .padding()
+                    .frame(width: 200, height: 200)
                 
                 
                 Text("Login")
@@ -48,35 +53,51 @@ struct Login: View {
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
                     .padding()
-                    
-                NavigationLink(destination: Home()) {
-                    Text("Login")
                 
-                }
-                Button("Login") {
-                    if name.isEmpty || password.isEmpty {
-                      ShowWarning = true
-                    }
-                }
-                
-             
+                //                NavigationLink(destination: Home()) {
+                //                    Text("Login")
+                //
+                //                }
+                //                Button("Button") {
+                //                    if name.isEmpty || password.isEmpty {
+                //                      ShowWarning = true
+                //                    }
             }
-            Spacer()
-            VStack{
-                
-                Text("Don't have an account?")
-                NavigationLink(destination: SignUp()) {
-                    Text("Sign Up!")
+            NavigationLink(destination: Home(), isActive: $NavigateHome) {
+                EmptyView()
+            }
+            Button(action: {
+                if name.isEmpty || password.isEmpty {
+                    ShowWarning = true
+                } else {
+                    NavigateHome = true
                 }
-                
+            }) {
+                Text("Go to Home")
+            }
+            .alert("Please fill in both name and password.", isPresented: $ShowWarning) {
+                Button("OK", role: .cancel) { }
             }
             
-           
-        } .padding()
+        }
+        Spacer()
+        VStack{
+            
+            Text("Don't have an account?")
+            NavigationLink(destination: SignUp()) {
+                Text("Sign Up!")
+            }
+            
+        }
+        .padding()
+        
+        
+    }
+    
     }
     
   
-}
+
 
 
 #Preview {

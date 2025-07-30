@@ -1,75 +1,215 @@
-//
-//  Lesson Plan 2.swift
-//  OSA_Academy
-//
-//  Created by Amelia Chow on 7/29/25.
-//
-
 import SwiftUI
 
-struct LessonThreeView: View {
-    @State var userInput: String = ""
-    @State var feedback: String = ""
+struct LessonTwoView: View {
+    @State private var backgroundColor: Color = .white
+    @State private var q1Correct = false
+    @State private var q2Correct = false
+    @State private var showQuestion2 = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Lesson 3: Numbers in Swift")
-                .font(.title)
-                .fontWeight(.bold)
+        ZStack {
+            backgroundColor
+                .ignoresSafeArea()
 
-            Text("In Swift, you can create numbers using:")
-                .font(.body)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 30) {
+                    Text("Swift Quiz")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
 
-            VStack(alignment: .leading, spacing: 5) {
-                Text("• `Int` for whole numbers")
-                Text("• `Float` for decimal numbers (less precise)")
-                Text("• `Double` for decimal numbers (more precise)")
-            }
-            .font(.system(.body, design: .monospaced))
-            .foregroundColor(.gray)
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("1. Which of the following is an example of a string in Swift?")
+                            .font(.headline)
 
-            Divider()
+                        Button {
+                            backgroundColor = .red
+                            q1Correct = false
+                        } label: {
+                            HStack {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 24, height: 24)
+                                    .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                Text("4.0")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 8)
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color.black.opacity(0.2))
+                            .cornerRadius(10)
+                        }
 
-            Text("📘 Task:")
-                .font(.headline)
+                        Button {
+                            backgroundColor = .green
+                            q1Correct = true
+                        } label: {
+                            HStack {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 24, height: 24)
+                                    .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                Text(#""I like watermelon""#)
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 8)
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color.black.opacity(0.2))
+                            .cornerRadius(10)
+                        }
 
-            Text("Write a line of Swift code to store the number **3.14** using a `Double`.\nExample: `let pi: Double = 3.14`")
-                .font(.body)
+                        Button {
+                            backgroundColor = .red
+                            q1Correct = false
+                        } label: {
+                            HStack {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 24, height: 24)
+                                    .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                Text("'mushrooms'")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 8)
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color.black.opacity(0.2))
+                            .cornerRadius(10)
+                        }
 
-            TextField("Type your Swift code here...", text: $userInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.vertical)
+                        Button {
+                            backgroundColor = .red
+                            q1Correct = false
+                        } label: {
+                            HStack {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 24, height: 24)
+                                    .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                Text("ice cream")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, 8)
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color.black.opacity(0.2))
+                            .cornerRadius(10)
+                        }
 
-            Button("Check My Code") {
-                let trimmed = userInput.replacingOccurrences(of: " ", with: "")
+                        Text(q1Correct ? "Correct!" : "Try again.")
+                            .foregroundColor(.white)
+                            .padding(.top, 5)
+                    }
 
-                if trimmed == "letpi:Double=3.14" {
-                    feedback = "✅ Great job! You correctly declared a Double."
-                } else if trimmed.contains("3.14") {
-                    feedback = "⚠️ Almost! Make sure you use `let`, the variable name `pi`, and `Double`."
-                } else {
-                    feedback = "❌ Not quite. Try declaring a Double with the value 3.14."
+                    if q1Correct && !showQuestion2 {
+                        Button("Next") {
+                            backgroundColor = .white
+                            showQuestion2 = true
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.yellow)
+                        .foregroundColor(.black)
+                        .cornerRadius(10)
+                        .font(.headline)
+                    }
+
+                    if showQuestion2 {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("2. Which of the following correctly prints an integer in Swift?")
+                                .font(.headline)
+
+                            Button {
+                                backgroundColor = .red
+                                q2Correct = false
+                            } label: {
+                                HStack {
+                                    Circle()
+                                        .fill(Color.white)
+                                        .frame(width: 24, height: 24)
+                                        .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                    Text(#"print("number")"#)
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 8)
+                                    Spacer()
+                                }
+                                .padding()
+                                .background(Color.black.opacity(0.2))
+                                .cornerRadius(10)
+                            }
+
+                            Button {
+                                backgroundColor = .red
+                                q2Correct = false
+                            } label: {
+                                HStack {
+                                    Circle()
+                                        .fill(Color.white)
+                                        .frame(width: 24, height: 24)
+                                        .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                    Text(#"print("6.2")"#)
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 8)
+                                    Spacer()
+                                }
+                                .padding()
+                                .background(Color.black.opacity(0.2))
+                                .cornerRadius(10)
+                            }
+
+                            Button {
+                                backgroundColor = .green
+                                q2Correct = true
+                            } label: {
+                                HStack {
+                                    Circle()
+                                        .fill(Color.white)
+                                        .frame(width: 24, height: 24)
+                                        .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                    Text(#"print(8)"#)
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 8)
+                                    Spacer()
+                                }
+                                .padding()
+                                .background(Color.black.opacity(0.2))
+                                .cornerRadius(10)
+                            }
+
+                            Button {
+                                backgroundColor = .red
+                                q2Correct = false
+                            } label: {
+                                HStack {
+                                    Circle()
+                                        .fill(Color.white)
+                                        .frame(width: 24, height: 24)
+                                        .overlay(Circle().stroke(Color.black, lineWidth: 1))
+                                    Text(#"print(9.2)"#)
+                                        .foregroundColor(.white)
+                                        .padding(.leading, 8)
+                                    Spacer()
+                                }
+                                .padding()
+                                .background(Color.black.opacity(0.2))
+                                .cornerRadius(10)
+                            }
+
+                            Text(q2Correct ? "Correct!" : "Try again.")
+                                .foregroundColor(.white)
+                                .padding(.top, 5)
+                        }
+                    }
+
+                    Spacer()
                 }
+                .padding()
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .clipShape(Capsule())
-
-            if !feedback.isEmpty {
-                Text("Feedback:")
-                    .font(.headline)
-                Text(feedback)
-                    .foregroundColor(feedback.contains("✅") ? .green : .red)
-                    .padding()
-            }
-
-            Spacer()
         }
-        .padding()
     }
 }
 
 #Preview {
-    LessonThreeView()
+    LessonTwoView()
 }

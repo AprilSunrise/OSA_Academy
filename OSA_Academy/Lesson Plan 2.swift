@@ -1,3 +1,9 @@
+//
+//  Lesson Plan.swift
+//  OSA_Academy
+//
+//  Created by Audrey Hou on 7/30/25.
+//
 import SwiftUI
 
 struct LessonTwoView: View {

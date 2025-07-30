@@ -16,6 +16,16 @@ struct Home: View {
             return Double(completedLessons) / Double(totalLessons)
         }
     var body: some View {
+        NavigationStack{
+            Text("Welcome to OSA!")
+                .font(.largeTitle)
+                .bold()
+            NavigationLink(destination: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Destination@*/Text("Destination")/*@END_MENU_TOKEN@*/) {
+                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label Content@*/Text("Navigate")/*@END_MENU_TOKEN@*/
+                
+            }
+            
+        }
         VStack(spacing: 30) {
                 Text("Progress: \(Int(progress * 100))%")
 

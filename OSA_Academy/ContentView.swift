@@ -9,36 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image("osa")
-            
-        }
-
-        NavigationStack {
-            
-            
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.pink]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             VStack {
-                Image("OSAlogo")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
+                Image("osa")
                 
-                Text("Welcome to OSA Academy! We are excited to raise the next batch of kids and help them become the best versions of themselves! To begin your journey, please sign up or log in!")
+            }
+            
+            NavigationStack {
                 
-                NavigationLink(destination: Login()) {
-                    Text("Login")
+                
+                VStack {
+                    Image("OSAlogo")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
                     
-                
+                    Text("Welcome to OSA Academy! We are excited to raise the next batch of kids and help them become the best versions of themselves! To begin your journey, please sign up or log in!")
+                        .multilineTextAlignment(.center)
+                    
+                    NavigationLink(destination: Login()) {
+                        Text("Login")
+                        
+                        
+                    }
+                    
                 }
                 
             }
-                
-            }
-
-
-        .padding()
+            .cornerRadius(30)
+            
+            
+            .padding()
+        }
     }
 }
+    #Preview {
+        ContentView()
+    }
 
-#Preview {
-    ContentView()
-}

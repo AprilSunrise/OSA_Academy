@@ -56,6 +56,8 @@ struct LessonOneView: View {
                     .font(.system(.body, design: .monospaced))
                     .foregroundColor(.green)
                     .padding()
+                Text("Congratulations! You've written your first line of code! ")
+                    .multilineTextAlignment(.center)
             }
 
             Spacer()

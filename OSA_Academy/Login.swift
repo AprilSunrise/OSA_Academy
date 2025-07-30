@@ -9,12 +9,32 @@ import SwiftUI
 import SwiftData
 
 struct Login: View {
+    @State var name = ""
+    @State var password = ""
+    @State private var ShowWarning: Bool = false
+    @State private var NavigateHome: Bool = false
     var body: some View {
-      let userNameField = TextField("Username", text: .constant(""))
-      let PasswordField = SecureField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("Apple")/*@END_MENU_TOKEN@*/)
+        
+        let userNameField = TextField("Username", text: $name)
+        
+        let PasswordField = SecureField("Password", text: $password)
         
         NavigationStack{
+            if ShowWarning {
+                Text("You must enter a username or password!")
+                    .foregroundColor(.red)
+                
+            }
+            Spacer()
             VStack{
+                
+                Image("bookKWK")
+                    .resizable(resizingMode: .stretch)
+                    .cornerRadius(505)
+                    .padding()
+                    .frame(width: 200, height: 200)
+                
+                
                 Text("Login")
                     .font(.largeTitle)
                     .bold()
@@ -22,28 +42,62 @@ struct Login: View {
                     .padding()
                     .foregroundColor(.purple)
                     .font(.caption)
-                //TextField("Username", text:  /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                 userNameField
                     .padding()
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
                     .padding()
                 
-                //SecureField("Password", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("Apple")/*@END_MENU_TOKEN@*/)
                 PasswordField
                     .padding()
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(20)
                     .padding()
-                NavigationLink(destination: Home()) {
-                    Text("Next")
-                    
-                    
-                }
+                
+                //                NavigationLink(destination: Home()) {
+                //                    Text("Login")
+                //
+                //                }
+                //                Button("Button") {
+                //                    if name.isEmpty || password.isEmpty {
+                //                      ShowWarning = true
+                //                    }
             }
-        } .padding()
+            NavigationLink(destination: Home(), isActive: $NavigateHome) {
+                EmptyView()
+            }
+            Button(action: {
+                if name.isEmpty || password.isEmpty {
+                    ShowWarning = true
+                } else {
+                    NavigateHome = true
+                }
+            }) {
+                Text("Go to Home")
+            }
+            .alert("Please fill in both name and password.", isPresented: $ShowWarning) {
+                Button("OK", role: .cancel) { }
+            }
+            
+        }
+        Spacer()
+        VStack{
+            
+            Text("Don't have an account?")
+            NavigationLink(destination: SignUp()) {
+                Text("Sign Up!")
+            }
+            
+        }
+        .padding()
+        
+        
     }
-}
+    
+    }
+    
+  
+
 
 
 #Preview {

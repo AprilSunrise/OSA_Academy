@@ -16,6 +16,7 @@ struct Home: View {
             return Double(completedLessons) / Double(totalLessons)
         }
     var body: some View {
+
         NavigationView{
             VStack(spacing: 40){
                 Text("Welcome Back!")
@@ -83,6 +84,33 @@ struct Home: View {
                                 .cornerRadius(8)
                         }
                         .offset(y: 120)
+
+        NavigationStack{
+            Text("Welcome to OSA!")
+                .font(.largeTitle)
+                .bold()
+            NavigationLink(destination: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Destination@*/Text("Destination")/*@END_MENU_TOKEN@*/) {
+                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label Content@*/Text("Navigate")/*@END_MENU_TOKEN@*/
+                
+            }
+            
+        }
+        VStack(spacing: 30) {
+                Text("Progress: \(Int(progress * 100))%")
+
+                    ZStack {
+                        Circle()
+                            .stroke(lineWidth: 20)
+                            .opacity(0.3)
+                            .foregroundColor(.blue)
+
+                        Circle()
+                            .trim(from: 0.0, to: CGFloat(min(progress, 1.0)))
+                            .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round))
+                            .foregroundColor(.blue)
+                            .rotationEffect(Angle(degrees: -90))
+                            .animation(.easeOut, value: progress)
+
 
                         
                     }

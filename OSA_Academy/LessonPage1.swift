@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LessonPage1: View {
     var body: some View {
-        Text("Lesson Page 1")
+        Text("Lesson 2")
             .font(.largeTitle)
             .padding()
     }

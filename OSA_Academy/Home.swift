@@ -43,21 +43,22 @@ struct Home: View {
                     // Lesson Buttons Around Ring
                     GeometryReader { geometry in
                         let radius: CGFloat = 100
+                        let buttonDistance: CGFloat = radius + 30
                         let centerX = geometry.size.width / 2
                         let centerY = geometry.size.height / 2
 
                         Group {
-                            NavigationLink(destination: Text("Lesson 1 Content")) {
+                            NavigationLink(destination: LessonOneView()) {
                                 lessonButton(label: "L1", color: .red)
                             }
                             .position(x: centerX, y: centerY - radius) // Top
 
-                            NavigationLink(destination: Text("Lesson 2 Content")) {
+                            NavigationLink(destination: LessonPage1()) {
                                 lessonButton(label: "L2", color: .orange)
                             }
                             .position(x: centerX + radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4)) // Top-right
 
-                            NavigationLink(destination: Text("Lesson 3 Content")) {
+                            NavigationLink(destination: LessonThreeView()) {
                                 lessonButton(label: "L3", color: .green)
                             }
                             .position(x: centerX + radius, y: centerY) // Right

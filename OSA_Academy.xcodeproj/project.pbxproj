@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		769A691B2E394BB5008DD725 /* Lesson Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A691A2E394BB5008DD725 /* Lesson Page.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		769A685A2E38211F008DD725 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -31,7 +27,6 @@
 		769A684C2E38211B008DD725 /* OSA_Academy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSA_Academy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		769A68592E38211F008DD725 /* OSA_AcademyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSA_AcademyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		769A68632E38211F008DD725 /* OSA_AcademyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSA_AcademyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		769A691A2E394BB5008DD725 /* Lesson Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson Page.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,7 +75,6 @@
 		769A68432E38211B008DD725 = {
 			isa = PBXGroup;
 			children = (
-				769A691A2E394BB5008DD725 /* Lesson Page.swift */,
 				769A684E2E38211B008DD725 /* OSA_Academy */,
 				769A685C2E38211F008DD725 /* OSA_AcademyTests */,
 				769A68662E38211F008DD725 /* OSA_AcademyUITests */,
@@ -242,7 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769A691B2E394BB5008DD725 /* Lesson Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

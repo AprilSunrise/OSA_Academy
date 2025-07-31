@@ -1,21 +1,10 @@
-//
-//  ContentView.swift
-//  OSA_Academy
-//
-//  Created by Audrey on 7/28/25.
-//
-
 import SwiftUI
-
 struct ContentView: View {
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.pink]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                Image("osa")
-                
-            }
+            
             
             NavigationStack {
                 
@@ -33,13 +22,18 @@ struct ContentView: View {
                         
                         
                     }
+                    .padding()
+                    NavigationLink(destination: SignUp()) {
+                        Text("Sign Up")
+                        
+                        
+                    }
                     
                 }
+                .cornerRadius(30)
+                
                 
             }
-            .cornerRadius(30)
-            
-            
             .padding()
         }
     }
@@ -47,4 +41,3 @@ struct ContentView: View {
     #Preview {
         ContentView()
     }
-

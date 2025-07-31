@@ -43,7 +43,7 @@ struct Home: View {
                 }
                 .frame(width: 200, height: 200)
                 
-                Spacer()
+                
                 Text("Your Lessons")
                     .font(.largeTitle)
                     .bold()
@@ -52,7 +52,7 @@ struct Home: View {
                     GeometryReader { geometry in
                         let radius: CGFloat = 130
                         let centerX = geometry.size.width / 2
-                        let centerY = geometry.size.height / 1.8
+                        let centerY = geometry.size.height / 2
                         
                         ZStack {
                             lessonNavigationLink(label: "L1", color: .red, destination: LessonOneView())

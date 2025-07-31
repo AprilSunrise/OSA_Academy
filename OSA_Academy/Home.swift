@@ -42,16 +42,17 @@ struct Home: View {
                 }
                 .frame(width: 200, height: 200)
 
-                VStack(spacing: 16) {
+                Spacer()
+                Text("Your Lessons")
+                    .font(.largeTitle)
+                    .bold()
                     
-                    Text("Your Lessons")
-                        .font(.headline)
-                        
-                    
+                
+                VStack {
                     GeometryReader { geometry in
                         let radius: CGFloat = 130
                         let centerX = geometry.size.width / 2
-                        let centerY = geometry.size.height / 1.1 // Adjust this if needed
+                        let centerY = geometry.size.height / 1.8 // Adjust this if needed
 
                         ZStack {
                             NavigationLink(destination: Text("hello!")) {
@@ -78,6 +79,28 @@ struct Home: View {
                                 lessonButton(label: "L5", color: .purple)
                             }
                             .position(x: centerX, y: centerY + radius)
+                            
+                            NavigationLink(destination: Text("Lesson 6 Content")) {
+                                lessonButton(label: "L6", color: .purple)
+                            }
+                            .position(x: centerX - radius*cos(.pi/4), y: centerY + radius * sin(.pi/4))
+                            
+                            NavigationLink(destination: Text("Lesson 7 Content")) {
+                                lessonButton(label: "L7", color: .purple)
+                            }
+                            .position(x: centerX - radius, y: centerY)
+                            
+                            NavigationLink(destination: Text("Lesson 8 Content")) {
+                                lessonButton(label: "L8", color: .purple)
+                            }
+                            .position(x: centerX - radius * cos(.pi/4), y: centerY - radius * sin(.pi/4))
+
+                            
+                            
+
+
+                            
+                                                        
                         }
                         .frame(width: geometry.size.width, height: geometry.size.height)
                     }

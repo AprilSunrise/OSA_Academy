@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct Home: View {
-    @State private var completedLessons = 0
-    @State private var totalLessons = 10
+    @State private var completedLessons = Set<String>()
+    @State private var totalLessons = 8 // Adjusted to match your number of lessons
     
     var progress: Double {
         guard totalLessons > 0 else { return 0.0 }
-        return Double(completedLessons) / Double(totalLessons)
+        return min(Double(completedLessons.count) / Double(totalLessons), 1.0)
     }
+    
     
     var body: some View {
         NavigationStack {
@@ -41,72 +42,41 @@ struct Home: View {
                         .bold()
                 }
                 .frame(width: 200, height: 200)
-
+                
                 Spacer()
                 Text("Your Lessons")
                     .font(.largeTitle)
                     .bold()
-                    
                 
                 VStack {
                     GeometryReader { geometry in
                         let radius: CGFloat = 130
                         let centerX = geometry.size.width / 2
-                        let centerY = geometry.size.height / 1.8 // Adjust this if needed
-
+                        let centerY = geometry.size.height / 1.8
+                        
                         ZStack {
-                            NavigationLink(destination: LessonOneView()) {
-                                lessonButton(label: "L1", color: .red)
-                            }
-                            .position(x: centerX, y: centerY - radius)
-                            
-                            NavigationLink(destination: LessonTwoView()) {
-                                lessonButton(label: "L2", color: .orange)
-                            }
-                            .position(x: centerX + radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4))
-                            
-                            NavigationLink(destination: Lesson3()) {
-                                lessonButton(label: "L3", color: .green)
-                            }
-                            .position(x: centerX + radius, y: centerY)
-                            
-                            NavigationLink(destination: LessonPage1()) {
-                                lessonButton(label: "L4", color: .blue)
-                            }
-                            .position(x: centerX + radius * cos(.pi / 4), y: centerY + radius * sin(.pi / 4))
-                            
-                            NavigationLink(destination: Lesson5()) {
-                                lessonButton(label: "L5", color: .purple)
-                            }
-                            .position(x: centerX, y: centerY + radius)
-                            
-                            NavigationLink(destination: Lesson6()) {
-                                lessonButton(label: "L6", color: .purple)
-                            }
-                            .position(x: centerX - radius*cos(.pi/4), y: centerY + radius * sin(.pi/4))
-                            
-                            NavigationLink(destination: Lesson7()) {
-                                lessonButton(label: "L7", color: .purple)
-                            }
-                            .position(x: centerX - radius, y: centerY)
-                            
-                            NavigationLink(destination: Lesson8()) {
-                                lessonButton(label: "L8", color: .purple)
-                            }
-                            .position(x: centerX - radius * cos(.pi/4), y: centerY - radius * sin(.pi/4))
-
-                            
-                            
-
-
-                            
-                                                        
+                            lessonNavigationLink(label: "L1", color: .red, destination: LessonOneView())
+                                .position(x: centerX, y: centerY - radius)
+                            lessonNavigationLink(label: "L2", color: .orange, destination: LessonTwoView())
+                                .position(x: centerX + radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4))
+                            lessonNavigationLink(label: "L3", color: .green, destination: Lesson3())
+                                .position(x: centerX + radius, y: centerY)
+                            lessonNavigationLink(label: "L4", color: .blue, destination: Lesson4())
+                                .position(x: centerX + radius * cos(.pi / 4), y: centerY + radius * sin(.pi / 4))
+                            lessonNavigationLink(label: "L5", color: .purple, destination: Lesson5())
+                                .position(x: centerX, y: centerY + radius)
+                            lessonNavigationLink(label: "L6", color: .purple, destination: Lesson6())
+                                .position(x: centerX - radius * cos(.pi / 4), y: centerY + radius * sin(.pi / 4))
+                            lessonNavigationLink(label: "L7", color: .purple, destination: Lesson7())
+                                .position(x: centerX - radius, y: centerY)
+                            lessonNavigationLink(label: "L8", color: .purple, destination: Lesson8())
+                                .position(x: centerX - radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4))
                         }
                         .frame(width: geometry.size.width, height: geometry.size.height)
                     }
                     .frame(height: 250)
                 }
-
+                
                 Spacer()
             }
             .padding()
@@ -121,8 +91,26 @@ struct Home: View {
             .foregroundColor(.white)
             .clipShape(Circle())
     }
-}
+    
+    func lessonNavigationLink<Destination: View>(
+        label: String,
+        color: Color,
+        destination: Destination
+    ) -> some View {
+        NavigationLink(destination: destination.onAppear {
+            // Add label to the completed set only once
+            if !completedLessons.contains(label) {
+                completedLessons.insert(label)
+            }
+        }) {
+            lessonButton(label: label, color: color)
+        }
+    }
+    
+    struct Home_Previews: PreviewProvider {
+        static var previews: some View {
+            Home()
+        }
+    }
 
-#Preview {
-    Home()
 }

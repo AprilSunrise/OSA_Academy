@@ -55,42 +55,42 @@ struct Home: View {
                         let centerY = geometry.size.height / 1.8 // Adjust this if needed
 
                         ZStack {
-                            NavigationLink(destination: Text("hello!")) {
+                            NavigationLink(destination: LessonOneView()) {
                                 lessonButton(label: "L1", color: .red)
                             }
                             .position(x: centerX, y: centerY - radius)
                             
-                            NavigationLink(destination: Text("hello!")) {
+                            NavigationLink(destination: LessonTwoView()) {
                                 lessonButton(label: "L2", color: .orange)
                             }
                             .position(x: centerX + radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4))
                             
-                            NavigationLink(destination: Text("hello!")) {
+                            NavigationLink(destination: Lesson3()) {
                                 lessonButton(label: "L3", color: .green)
                             }
                             .position(x: centerX + radius, y: centerY)
                             
-                            NavigationLink(destination: Text("Lesson 4 Content")) {
+                            NavigationLink(destination: LessonPage1()) {
                                 lessonButton(label: "L4", color: .blue)
                             }
                             .position(x: centerX + radius * cos(.pi / 4), y: centerY + radius * sin(.pi / 4))
                             
-                            NavigationLink(destination: Text("Lesson 5 Content")) {
+                            NavigationLink(destination: Lesson5()) {
                                 lessonButton(label: "L5", color: .purple)
                             }
                             .position(x: centerX, y: centerY + radius)
                             
-                            NavigationLink(destination: Text("Lesson 6 Content")) {
+                            NavigationLink(destination: Lesson6()) {
                                 lessonButton(label: "L6", color: .purple)
                             }
                             .position(x: centerX - radius*cos(.pi/4), y: centerY + radius * sin(.pi/4))
                             
-                            NavigationLink(destination: Text("Lesson 7 Content")) {
+                            NavigationLink(destination: Lesson7()) {
                                 lessonButton(label: "L7", color: .purple)
                             }
                             .position(x: centerX - radius, y: centerY)
                             
-                            NavigationLink(destination: Text("Lesson 8 Content")) {
+                            NavigationLink(destination: Lesson8()) {
                                 lessonButton(label: "L8", color: .purple)
                             }
                             .position(x: centerX - radius * cos(.pi/4), y: centerY - radius * sin(.pi/4))

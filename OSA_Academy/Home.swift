@@ -49,9 +49,15 @@ struct Home: View {
                         
                     
                     GeometryReader { geometry in
+
                         let radius: CGFloat = 130
+
+                        let radius: CGFloat = 100
+                        let _: CGFloat = radius + 30
+
                         let centerX = geometry.size.width / 2
                         let centerY = geometry.size.height / 1.1 // Adjust this if needed
+
 
                         ZStack {
                             NavigationLink(destination: Text("hello!")) {
@@ -65,6 +71,20 @@ struct Home: View {
                             .position(x: centerX + radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4))
                             
                             NavigationLink(destination: Text("hello!")) {
+
+                         Group {
+                            NavigationLink(destination: LessonOneView()) {
+                                lessonButton(label: "L1", color: .red)
+                            }
+                            .position(x: centerX, y: centerY - radius) // Top
+
+                            NavigationLink(destination: LessonTwoView()) {
+                                lessonButton(label: "L2", color: .orange)
+                            }
+                            .position(x: centerX + radius * cos(.pi / 4), y: centerY - radius * sin(.pi / 4)) // Top-right
+
+                            NavigationLink(destination: Login()) {
+
                                 lessonButton(label: "L3", color: .green)
                             }
                             .position(x: centerX + radius, y: centerY)
